@@ -12,6 +12,7 @@
     // ]
 
     "files.associations": {
-        "*.asm": "riscv"   
+        "*.asm": "riscv",
+        ".cargo/config": "toml",
     }
 }

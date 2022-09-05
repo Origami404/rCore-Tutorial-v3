@@ -81,5 +81,16 @@ RUN rustup target add riscv64gc-unknown-none-elf && \
     rustup component add rust-src && \
     rustup component add llvm-tools-preview
 
+# 4 User config
+
+# 4.1 install gdb for riscv
+RUN wget -O gdb.tar.gz https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14.tar.gz && \
+    tar xf gdb.tar.gz && \
+    mv riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14 ${HOME}/.local
+
+RUN apt-get install -y python3 python-is-python3 python3-pip strace && \
+    pip install pygments && \
+    wget -P ~ https://git.io/.gdbinit
+
 # Ready to go
 WORKDIR ${HOME}
